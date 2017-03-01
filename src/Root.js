@@ -1,10 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import TodoApp from './TodoApp';
+import { Router, Route, browserHistory } from 'react-router';
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <TodoApp />
+    <Router history={browserHistory}>
+      <Route path='/' component={TodoApp} />
+    </Router>
   </Provider>
 );
 
