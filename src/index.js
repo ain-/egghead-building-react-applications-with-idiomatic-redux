@@ -9,9 +9,10 @@ import { loadState, saveState } from './localStorage';
 const persistedState = loadState();
 
 const store = createStore(todoApp, persistedState);
-
 store.subscribe(() => {
-  saveState(store.getState());
+  saveState({
+    todos: store.getState().todos
+  });
 });
 
 ReactDOM.render(
