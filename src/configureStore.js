@@ -24,20 +24,18 @@ const promise = (store) => (next) => (action) => {
 };
 
 const wrapDispatchWithMiddlewares = (store, middlewares) => {
-  middlewares.forEach(middleware =>
+  middlewares.slice().reverse().forEach(middleware =>
     store.dispatch = middleware(store)(store.dispatch)
   );
 }
 
 const configureStore = () => {
   const store = createStore(todoApp);
-  const middlewares = [];
+  const middlewares = [promise];
 
   if (process.env.NODE_ENV !== 'production') {
     middlewares.push(logger);
   }
-
-  middlewares.push(promise);
 
   wrapDispatchWithMiddlewares(store, middlewares);
 
