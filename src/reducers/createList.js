@@ -13,3 +13,5 @@ const createList = (filter) => {
 };
 
 export default createList;
+
+export const getIds = (state) => state;
