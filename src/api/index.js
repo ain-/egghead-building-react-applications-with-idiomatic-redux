@@ -21,7 +21,9 @@ const delay = (ms) =>
 
 export const fetchTodos = (filter) =>
   delay(500).then(() => {
-    throw new Error('boom');
+    if (Math.random() > 0.5) {
+      throw new Error('boom');
+    }
     switch (filter) {
       case 'all':
         return fakeDatabase.todos;

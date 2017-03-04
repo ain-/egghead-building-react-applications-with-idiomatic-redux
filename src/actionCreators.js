@@ -23,7 +23,6 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
       dispatch({
         type: 'FETCH_TODOS_FAILURE',
         filter,
-        error,
         message: error.message || 'Something went wrong.'
       });
     }
