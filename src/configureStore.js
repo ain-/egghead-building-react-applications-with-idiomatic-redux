@@ -2,10 +2,11 @@ import todoApp from './reducers';
 import createLogger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 
-const thunk = (store) => (next) => (action) =>
-  typeof action === 'function' ?
-    action(store.dispatch) :
+const thunk = (store) => (next) => (action) => {
+  return typeof action === 'function' ?
+    action(store.dispatch, store.getState) :
     next.action;
+};
 
 const configureStore = () => {
   const middlewares = [thunk];
